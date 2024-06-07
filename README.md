@@ -8,11 +8,11 @@ This repository contains a suite of three microservices built with NodeJS:
 
 ## Features:
 
-Authentication: Supports two types of authentication mechanisms:<br>
-Local Authentication: Using username and password.<br>
-LDAP Authentication: Domain-based authentication via Active Directory.<br>
-Authorization: Role-based and action-based authorization mechanisms.<br>
-This architecture provides a robust framework for secure and scalable service management, combining modern authentication practices with flexible authorization controls.<br>
+- Authentication: Supports two types of authentication mechanisms:<br>
+- Local Authentication: Using username and password.<br>
+- LDAP Authentication: Domain-based authentication via Active Directory.<br>
+- Authorization: Role-based and action-based authorization mechanisms.<br>
+- This architecture provides a robust framework for secure and scalable service management, combining modern authentication practices with flexible authorization controls.<br>
 
 ## Requirements: 
 
