@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "a2de8d33-3fcc-4407-b883-a1eb18db326a",
+		"name": "02-Auth service",
+		"description": "Is a service for user identification and authentication.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11511149",
+		"_collection_link": "https://crimson-crescent-675783.postman.co/workspace/MediaMTX~2e53b82c-64ba-42f8-a047-22483568fae7/collection/11511149-a2de8d33-3fcc-4407-b883-a1eb18db326a?action=share&source=collection_link&creator=11511149"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Auth service -> Authentication -> User -> login local",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Auth service URL}}/authentication/login/local",
+							"host": [
+								"{{Auth service URL}}"
+							],
+							"path": [
+								"authentication",
+								"login",
+								"local"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth service -> Authentication -> login ldap",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Auth service URL}}/authentication/login/local",
+							"host": [
+								"{{Auth service URL}}"
+							],
+							"path": [
+								"authentication",
+								"login",
+								"local"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth service -> Authentication -> verify token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjU4N2QyMWMyMDU2ZGYzZTJmMDZiYjciLCJlbmFibGVkIjp0cnVlLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImlzYWRtaW5AZ21haWwuY29tIiwidXNlcmdyb3VwcyI6WyI2NjU4N2QyMWMyMDU2ZGYzZTJmMDZiYjQiXSwiZGVzY3JpcHRpb24iOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA1LTMwVDEzOjIwOjMzLjYzMVoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA1LTMwVDEzOjIwOjMzLjY5M1oiLCJpYXQiOjE3MTcwODI2ODEsImV4cCI6MTcxNzA4Mjc0MX0.rK_x0FEeNWidSR39ekALxgedgIQjd4UBwwdltVlSH2Drv-BzkPAEjcdYEM-3cDLzL2MbW8TXWzWz7exRyt8sMg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY2NTg3ZDIxYzIwNTZkZjNlMmYwNmJiNyIsImVuYWJsZWQiOnRydWUsIm5hbWUiOiJhZG1pbiIsImVtYWlsIjoiaXNhZG1pbkBnbWFpbC5jb20iLCJ1c2VyZ3JvdXBzIjpbIjY2NTg3ZDIxYzIwNTZkZjNlMmYwNmJiNCJdLCJkZXNjcmlwdGlvbiI6IiIsImNyZWF0ZWRBdCI6IjIwMjQtMDUtMzBUMTM6MjA6MzMuNjMxWiIsInVwZGF0ZWRBdCI6IjIwMjQtMDUtMzBUMTM6MjA6MzMuNjkzWiJ9LCJpYXQiOjE3MTcwODM2MTIsImV4cCI6MTcxNzA4MzY3Mn0._CX6ZX2MkVhlrCkInoRfS8Xy4Y2z78VpOk9xeOzHPl2TSiKVYLES2ezdUbNZGShE0tiKF4tYL1etoVdylTL5Iw\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Auth service URL}}/authentication/verify-token",
+							"host": [
+								"{{Auth service URL}}"
+							],
+							"path": [
+								"authentication",
+								"verify-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth service -> Authentication -> refresh token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjU4N2QyMWMyMDU2ZGYzZTJmMDZiYjciLCJlbmFibGVkIjp0cnVlLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImlzYWRtaW5AZ21haWwuY29tIiwidXNlcmdyb3VwcyI6WyI2NjU4N2QyMWMyMDU2ZGYzZTJmMDZiYjQiXSwiZGVzY3JpcHRpb24iOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA1LTMwVDEzOjIwOjMzLjYzMVoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA1LTMwVDEzOjIwOjMzLjY5M1oiLCJpYXQiOjE3MTcwODI2ODEsImV4cCI6MTcxNzA4Mjc0MX0.rK_x0FEeNWidSR39ekALxgedgIQjd4UBwwdltVlSH2Drv-BzkPAEjcdYEM-3cDLzL2MbW8TXWzWz7exRyt8sMg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjU5YzJiMWQxNWM3YjI2ZjJkODYxM2QiLCJpYXQiOjE3MTcxNjE2MzYsImV4cCI6MTcxODM3MTIzNn0.ztYCdMgLM65peFFG6cqyBS0MNxMUmsEKA3kHbEJPigF1fn_MPL7T2tdXlB6vP2qKEXePDCCwNEadDKfhwQgGYQ\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Auth service URL}}/authentication/refresh-token",
+							"host": [
+								"{{Auth service URL}}"
+							],
+							"path": [
+								"authentication",
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth service -> Authentication -> logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjU4N2QyMWMyMDU2ZGYzZTJmMDZiYjciLCJlbmFibGVkIjp0cnVlLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImlzYWRtaW5AZ21haWwuY29tIiwidXNlcmdyb3VwcyI6WyI2NjU4N2QyMWMyMDU2ZGYzZTJmMDZiYjQiXSwiZGVzY3JpcHRpb24iOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA1LTMwVDEzOjIwOjMzLjYzMVoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA1LTMwVDEzOjIwOjMzLjY5M1oiLCJpYXQiOjE3MTcwODI2ODEsImV4cCI6MTcxNzA4Mjc0MX0.rK_x0FEeNWidSR39ekALxgedgIQjd4UBwwdltVlSH2Drv-BzkPAEjcdYEM-3cDLzL2MbW8TXWzWz7exRyt8sMg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NjU5YzJiMWQxNWM3YjI2ZjJkODYxM2QiLCJpYXQiOjE3MTcxNjE2MzYsImV4cCI6MTcxODM3MTIzNn0.ztYCdMgLM65peFFG6cqyBS0MNxMUmsEKA3kHbEJPigF1fn_MPL7T2tdXlB6vP2qKEXePDCCwNEadDKfhwQgGYQ\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Auth service URL}}/authentication/logout",
+							"host": [
+								"{{Auth service URL}}"
+							],
+							"path": [
+								"authentication",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Auth service -> Authorization -> authorize actions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": \"{{userId}}\",\r\n    \"checkActions\": [\r\n        \"create_users\",\r\n        \"read_users\",\r\n        \"update_users\",\r\n        \"delete_users\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Auth service URL}}/authorization/authorize-actions",
+							"host": [
+								"{{Auth service URL}}"
+							],
+							"path": [
+								"authorization",
+								"authorize-actions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

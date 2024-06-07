@@ -1,0 +1,875 @@
+{
+	"info": {
+		"_postman_id": "0563fd31-8a3b-4de2-893d-67b9daf71443",
+		"name": "03-User service",
+		"description": "This is a service for managing users and user groups.\n\nThis is also include a simple local authentication with login and password - is used by Identity service.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11511149",
+		"_collection_link": "https://crimson-crescent-675783.postman.co/workspace/MediaMTX~2e53b82c-64ba-42f8-a047-22483568fae7/collection/11511149-0563fd31-8a3b-4de2-893d-67b9daf71443?action=share&source=collection_link&creator=11511149"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "User service -> users -> register new user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"vovkotrub.bo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{User service URL}}/users",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> users -> get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/users?names[]=admin&page=1&limit=50&select[]=name&select[]=usergroups&select[]=roles&populate[]=usergroups&populate[]=roles&rolesSelect[]=name&usergroupsSelect[]=name",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "names[]",
+									"value": "admin"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "50"
+								},
+								{
+									"key": "select[]",
+									"value": "name"
+								},
+								{
+									"key": "select[]",
+									"value": "usergroups"
+								},
+								{
+									"key": "select[]",
+									"value": "roles"
+								},
+								{
+									"key": "populate[]",
+									"value": "usergroups"
+								},
+								{
+									"key": "populate[]",
+									"value": "roles"
+								},
+								{
+									"key": "rolesSelect[]",
+									"value": "name"
+								},
+								{
+									"key": "usergroupsSelect[]",
+									"value": "name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> users -> get one user by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/users?name=Admin&limit=1&populateUsergroups=true",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Admin"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								},
+								{
+									"key": "populateUsergroups",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> users -> get one user by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/users/{{userId}}?populate[]=usergroups&usergroupsSelect[]=name&populate[]=roles&rolesSelect[]=name",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}"
+							],
+							"query": [
+								{
+									"key": "populate[]",
+									"value": "usergroups"
+								},
+								{
+									"key": "usergroupsSelect[]",
+									"value": "name"
+								},
+								{
+									"key": "populate[]",
+									"value": "roles"
+								},
+								{
+									"key": "rolesSelect[]",
+									"value": "name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> users -> update one user",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"bla bla bla...\",\r\n    \"password\": \"1111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{User service URL}}/users/{{userId}}",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> users -> remove one user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/users/6661632ddd74d6769a44f161",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"users",
+								"6661632ddd74d6769a44f161"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> users -> get all user roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/users/{{userId}}/roles?select[]=name",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}",
+								"roles"
+							],
+							"query": [
+								{
+									"key": "select[]",
+									"value": "name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> users -> get all user actions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/users/{{userId}}/actions?select[]=name",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"users",
+								"{{userId}}",
+								"actions"
+							],
+							"query": [
+								{
+									"key": "select[]",
+									"value": "name"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "usergroups",
+			"item": [
+				{
+					"name": "User service -> usergroups -> register new usergroup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"group1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{User service URL}}/usergroups",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"usergroups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> usergroups -> get all usergroups",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/usergroups?page=1&limit=50&select[]=name&select[]=users&select[]=roles&populate[]=users&usersSelect[]=name&populate[]=roles&rolesSelect[]=name",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"usergroups"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "50"
+								},
+								{
+									"key": "select[]",
+									"value": "name"
+								},
+								{
+									"key": "select[]",
+									"value": "users"
+								},
+								{
+									"key": "select[]",
+									"value": "roles"
+								},
+								{
+									"key": "populate[]",
+									"value": "users"
+								},
+								{
+									"key": "usersSelect[]",
+									"value": "name"
+								},
+								{
+									"key": "populate[]",
+									"value": "roles"
+								},
+								{
+									"key": "rolesSelect[]",
+									"value": "name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> usergroups -> get one usergroup by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/usergroups?name=administrators&limit=1&populateUsers=true",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"usergroups"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "administrators"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								},
+								{
+									"key": "populateUsers",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> usergroups -> get one usergroup by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/usergroups/{{usergroupId}}?populate[]=users&usersSelect[]=enabled&usersSelect[]=name&populate[]=roles&rolesSelect[]=name",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"usergroups",
+								"{{usergroupId}}"
+							],
+							"query": [
+								{
+									"key": "populate[]",
+									"value": "users"
+								},
+								{
+									"key": "usersSelect[]",
+									"value": "enabled"
+								},
+								{
+									"key": "usersSelect[]",
+									"value": "name"
+								},
+								{
+									"key": "populate[]",
+									"value": "roles"
+								},
+								{
+									"key": "rolesSelect[]",
+									"value": "name"
+								},
+								{
+									"key": "select[]",
+									"value": "users",
+									"disabled": true
+								},
+								{
+									"key": "select[]",
+									"value": "roles",
+									"disabled": true
+								},
+								{
+									"key": "select[]",
+									"value": "-createdAt",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> usergroups -> update one usergroup",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"roles\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{User service URL}}/usergroups/{{usergroupId}}",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"usergroups",
+								"{{usergroupId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> usergroups -> remove one usergroup",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/usergroups/665dcab6eedb606b65451ee2",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"usergroups",
+								"665dcab6eedb606b65451ee2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "roles",
+			"item": [
+				{
+					"name": "User service -> roles -> register new role",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"role1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{User service URL}}/roles",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> roles -> get all roles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/roles?page=1&limit=50&select[]=name&select[]=users&select[]=actions&populate[]=actions&actionsSelect[]=name",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"roles"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "50"
+								},
+								{
+									"key": "select[]",
+									"value": "name"
+								},
+								{
+									"key": "select[]",
+									"value": "users"
+								},
+								{
+									"key": "select[]",
+									"value": "actions"
+								},
+								{
+									"key": "populate[]",
+									"value": "actions"
+								},
+								{
+									"key": "actionsSelect[]",
+									"value": "name"
+								},
+								{
+									"key": "names[]",
+									"value": "Administrator",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> roles -> get one role by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/roles?names[]=super_administrator&limit=1",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"roles"
+							],
+							"query": [
+								{
+									"key": "names[]",
+									"value": "super_administrator"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> roles -> get one role by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/roles/{{roleId}}?select[]=name&select[]=actions&populate[]=actions&actionsSelect[]=name&actionsSelect[]=description",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"roles",
+								"{{roleId}}"
+							],
+							"query": [
+								{
+									"key": "select[]",
+									"value": "name"
+								},
+								{
+									"key": "select[]",
+									"value": "actions"
+								},
+								{
+									"key": "populate[]",
+									"value": "actions"
+								},
+								{
+									"key": "actionsSelect[]",
+									"value": "name"
+								},
+								{
+									"key": "actionsSelect[]",
+									"value": "description"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> roles -> update one role",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usergroups\": [\r\n        \"{{usergroupId}}\"\r\n    ],\r\n    \"users\": [\r\n        \"{{userId}}\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{User service URL}}/roles/{{roleId}}",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"roles",
+								"{{roleId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> roles -> remove one role",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/roles/{{roleId}}",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"roles",
+								"{{roleId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "actions",
+			"item": [
+				{
+					"name": "User service -> actions -> register new action",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"bobos_action\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{User service URL}}/actions",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"actions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> actions -> get all actions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/actions?page=1&limit=50",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"actions"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> actions -> get one action by name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/actions?names[]=read_users&limit=1",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"actions"
+							],
+							"query": [
+								{
+									"key": "names[]",
+									"value": "read_users"
+								},
+								{
+									"key": "limit",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> actions -> get one action by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{User service URL}}/actions/{{actionId}}?select[]=name&select[]=updatedAt",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"actions",
+								"{{actionId}}"
+							],
+							"query": [
+								{
+									"key": "select[]",
+									"value": "name"
+								},
+								{
+									"key": "select[]",
+									"value": "updatedAt"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> actions -> update one action",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"bla bla bla.....\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{User service URL}}/actions/{{actionId}}",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"actions",
+								"{{actionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User service -> actions -> remove one action",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"bla bla bla.....\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{User service URL}}/actions/{{actionId}}",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"actions",
+								"{{actionId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "authentication",
+			"item": [
+				{
+					"name": "User service -> authentication -> localLogin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{User service URL}}/authentication/login",
+							"host": [
+								"{{User service URL}}"
+							],
+							"path": [
+								"authentication",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

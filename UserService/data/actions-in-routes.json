@@ -1,0 +1,35 @@
+{
+  "usersRouter": {
+    "registerNewUser": [ "create_users" ],
+    "getAllUsers": [ "read_users" ],
+    "getOneUserById": [ "read_users" ],
+    "updateOneUser": [ "update_users" ],
+    "removeOneUser": [ "delete_users" ],
+    "getAllUserRoles": [ "read_roles_of_users" ],
+    "getAllUserActions": [ "read_allowed_actions_of_user" ]
+  },
+  "usergroupsRouter": {
+    "addNewUsergroup": [ "create_usergroups" ],
+    "getAllUsergroups": [ "read_usergroups" ],
+    "getOneUsergroupById": [ "read_usergroups" ],
+    "updateOneUsergroup": [ "update_usergroups" ],
+    "removeOneUsergroup": [ "delete_usergroups" ]
+  },
+  "rolesRouter": {
+    "addNewRole": [ "create_roles" ],
+    "getAllRoles": [ "read_roles" ],
+    "getOneRoleById": [ "read_roles" ],
+    "updateOneRole": [ "update_roles" ],
+    "removeOneRole": [ "delete_roles" ]
+  },
+  "actionsRouter": {
+    "addNewAction": [ "create_actions" ],
+    "getAllActions": [ "read_actions" ],
+    "getOneActionById": [ "read_actions" ],
+    "updateOneAction": [ "update_actions" ],
+    "removeOneAction": [ "delete_actions" ]
+  },
+  "authenticationRouter": {
+    "login": [ "can_authenticate_with_local_login_and_password" ]
+  }
+}

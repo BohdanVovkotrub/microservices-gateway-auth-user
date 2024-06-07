@@ -1,0 +1,1001 @@
+{
+	"info": {
+		"_postman_id": "f85e002c-133a-47f8-940d-3d119d225fb8",
+		"name": "01-API-Gateway",
+		"description": "API-Gateway is a gateway of all routes of all microservices.  \nClient works with APIs via this API-Gateway.\n\nThis service opened in a network to clients, but all others must be an closed in network access.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11511149",
+		"_collection_link": "https://crimson-crescent-675783.postman.co/workspace/MediaMTX~2e53b82c-64ba-42f8-a047-22483568fae7/collection/11511149-f85e002c-133a-47f8-940d-3d119d225fb8?action=share&source=collection_link&creator=11511149"
+	},
+	"item": [
+		{
+			"name": "proxy to Auth service",
+			"item": [
+				{
+					"name": "authentication",
+					"item": [
+						{
+							"name": "Gateway -> Auth service -> authentication -> login local",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"admin\",\r\n    \"password\": \"admin\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API-Gateway URL}}/authentication/login/local",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"authentication",
+										"login",
+										"local"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> Auth service -> authentication -> login ldap",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"vovkotrub.bo\",\r\n    \"password\": \"Garbage_37\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API-Gateway URL}}/authentication/login/ldap",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"authentication",
+										"login",
+										"ldap"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> Auth service -> authentication -> refresh token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refreshToken\": \"{{refreshToken}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API-Gateway URL}}/authentication/refresh-token",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"authentication",
+										"refresh-token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> Auth service -> authentication -> logout",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjU4N2QyMWMyMDU2ZGYzZTJmMDZiYjciLCJlbmFibGVkIjp0cnVlLCJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImlzYWRtaW5AZ21haWwuY29tIiwidXNlcmdyb3VwcyI6WyI2NjU4N2QyMWMyMDU2ZGYzZTJmMDZiYjQiXSwiZGVzY3JpcHRpb24iOiIiLCJjcmVhdGVkQXQiOiIyMDI0LTA1LTMwVDEzOjIwOjMzLjYzMVoiLCJ1cGRhdGVkQXQiOiIyMDI0LTA1LTMwVDEzOjIwOjMzLjY5M1oiLCJpYXQiOjE3MTcwODI2ODEsImV4cCI6MTcxNzA4Mjc0MX0.rK_x0FEeNWidSR39ekALxgedgIQjd4UBwwdltVlSH2Drv-BzkPAEjcdYEM-3cDLzL2MbW8TXWzWz7exRyt8sMg",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"refreshToken\": \"{{refreshToken}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API-Gateway URL}}/authentication/logout",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"authentication",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "proxy to User service",
+			"item": [
+				{
+					"name": "users",
+					"item": [
+						{
+							"name": "Gateway -> User service -> users -> register new user",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"user3\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API-Gateway URL}}/users",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> users -> get all users",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API-Gateway URL}}/users?page=1&limit=50&populate[]=a&populate[]=b",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "50"
+										},
+										{
+											"key": "populate[]",
+											"value": "a"
+										},
+										{
+											"key": "populate[]",
+											"value": "b"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> users -> get one user by name",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API-Gateway URL}}/users?name=admin&limit=1&populateUsergroups=true",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "admin"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										},
+										{
+											"key": "populateUsergroups",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> users -> get one user by id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API-Gateway URL}}/users/{{userId}}",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"users",
+										"{{userId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway  -> User service -> users -> update one user",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"newmauk@ksdk.kd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API-Gateway URL}}/users/665c86e32c8c436083c781dd",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"users",
+										"665c86e32c8c436083c781dd"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway  -> User service -> users -> remove one user",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API-Gateway URL}}/users/{{userId}}",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"users",
+										"{{userId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> users -> get all user roles",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API-Gateway URL}}/users/{{userId}}/roles?select[]=name",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"users",
+										"{{userId}}",
+										"roles"
+									],
+									"query": [
+										{
+											"key": "select[]",
+											"value": "name"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> users -> get all user actions",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{User service URL}}/users/{{userId}}/actions?select[]=name",
+									"host": [
+										"{{User service URL}}"
+									],
+									"path": [
+										"users",
+										"{{userId}}",
+										"actions"
+									],
+									"query": [
+										{
+											"key": "select[]",
+											"value": "name"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "usergroups",
+					"item": [
+						{
+							"name": "Gateway -> User service -> usergroups -> register new usergroup",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"usergroup2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API-Gateway URL}}/usergroups",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"usergroups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> usergroups -> get all usergroups",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API-Gateway URL}}/usergroups?page=1&limit=50&populateUsers=false",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"usergroups"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "50"
+										},
+										{
+											"key": "populateUsers",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> usergroups -> get one usergroup by name",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API-Gateway URL}}/usergroups?name=administrators&limit=1&populateUsers=true",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"usergroups"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "administrators"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										},
+										{
+											"key": "populateUsers",
+											"value": "true"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> usergroups -> get one usergroup by id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API-Gateway URL}}/usergroups/665dd9622f91e7d2a958db47",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"usergroups",
+										"665dd9622f91e7d2a958db47"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway  -> User service -> usergroups -> update one usergroup",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"description\": \"some description text ....\",\r\n    \"users\": []\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API-Gateway URL}}/usergroups/{{usergroupId}}",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"usergroups",
+										"{{usergroupId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway  -> User service -> usergroups -> remove one usergroup",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API-Gateway URL}}/usergroups/{{usergroupId}}",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"usergroups",
+										"{{usergroupId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "roles",
+					"item": [
+						{
+							"name": "Gateway -> User service -> roles -> register new role",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"role1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API-Gateway URL}}/roles",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"roles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> roles -> get all roles",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API-Gateway URL}}/roles?page=1&limit=50&select[]=name",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"roles"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "50"
+										},
+										{
+											"key": "select[]",
+											"value": "name"
+										},
+										{
+											"key": "select[]",
+											"value": "users",
+											"disabled": true
+										},
+										{
+											"key": "select[]",
+											"value": "actions",
+											"disabled": true
+										},
+										{
+											"key": "populate[]",
+											"value": "actions",
+											"disabled": true
+										},
+										{
+											"key": "actionsSelect[]",
+											"value": "name",
+											"disabled": true
+										},
+										{
+											"key": "names[]",
+											"value": "Administrator",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> roles -> get one role by name",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API-Gateway URL}}/roles?names[]=administrator&limit=1",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"roles"
+									],
+									"query": [
+										{
+											"key": "names[]",
+											"value": "administrator"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> roles -> get one role by id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API-Gateway URL}}/roles/{{roleId}}?select[]=name&select[]=actions&populate[]=actions&actionsSelect[]=name&actionsSelect[]=description",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"roles",
+										"{{roleId}}"
+									],
+									"query": [
+										{
+											"key": "select[]",
+											"value": "name"
+										},
+										{
+											"key": "select[]",
+											"value": "actions"
+										},
+										{
+											"key": "populate[]",
+											"value": "actions"
+										},
+										{
+											"key": "actionsSelect[]",
+											"value": "name"
+										},
+										{
+											"key": "actionsSelect[]",
+											"value": "description"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> roles -> update one role",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usergroups\": [\r\n        \"{{usergroupId}}\"\r\n    ],\r\n    \"users\": [\r\n        \"{{userId}}\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API-Gateway URL}}/roles/{{roleId}}",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"roles",
+										"{{roleId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> roles -> remove one role",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API-Gateway URL}}/roles/{{roleId}}",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"roles",
+										"{{roleId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "actions",
+					"item": [
+						{
+							"name": "Gateway -> User service -> actions -> register new action",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"read_all_speech_groups\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API-Gateway URL}}/actions",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"actions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> actions -> get all actions",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API-Gateway URL}}/actions?page=1&limit=50",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"actions"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "50"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> actions -> get one action by name",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API-Gateway URL}}/actions?name=read_users&limit=1",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"actions"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "read_users"
+										},
+										{
+											"key": "limit",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> actions -> get one action by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API-Gateway URL}}/actions/{{actionId}}?select[]=name&select[]=updatedAt",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"actions",
+										"{{actionId}}"
+									],
+									"query": [
+										{
+											"key": "select[]",
+											"value": "name"
+										},
+										{
+											"key": "select[]",
+											"value": "updatedAt"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> actions -> update one action",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"description\": \"bla bla bla.....\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API-Gateway URL}}/actions/{{actionId}}",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"actions",
+										"{{actionId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Gateway -> User service -> actions -> remove one action",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{accessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"description\": \"bla bla bla.....\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API-Gateway URL}}/actions/{{actionId}}",
+									"host": [
+										"{{API-Gateway URL}}"
+									],
+									"path": [
+										"actions",
+										"{{actionId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
